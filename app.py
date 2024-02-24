@@ -23,21 +23,20 @@ app.mount("/js", StaticFiles(directory="public/js"), name="js")
 
 
 @app.get('/', response_class=HTMLResponse)
-def get_home(request: Request) -> HTMLResponse:
+def get_home() -> HTMLResponse:
     """
     Get the homepage
     :param request: the request object
     :return: the homepage
     """
-    return HTMLResponse(content=views.get_template("home.html").render(), status_code=200)
+    return HTMLResponse(content=views.get_template("main.html").render(), status_code=200)
 
-
-@app.post("/")
-def check_email_exists(user: User) -> str:
+@app.post("/{img_id}")
+def post_image(img_src: str, img_id: int) -> str:
     return(Auth.verify_availability(user.username, user.email))
 
-@app.put('/website/customer/{img_id}')
-def put_user(user:User, user_id: str, request: Request) -> dict:
+@app.put('/{img_id}')
+def modify_image(img_id: int) -> dict:
     session = sessions.get_session(request)
     session['username'] = user.username
     return {'success': Auth.update_user(user_id, user.first_name, user.last_name, user.email, user.username, Security.encrypt(user.password))}
