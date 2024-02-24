@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Manager</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+    <script src="/public/js/main.js"></script>
+</head>
+<body>
+    <div id="createImage">
+        <h2>Create a New Image</h2>
+        <form id="createForm">
+            <input type="text" id="createImgTitle" placeholder="Title">
+            <input type="text" id="createImgDescription" placeholder="Description">
+            <input type="text" id="createImgSrc" placeholder="Image Source URL">
+            <input type="submit" value="Create Image">
+        </form>
+    </div>
+    
+    <div id="imagesList">
+        {% for img_id, img_data in images.items() %}
+        <div class="imageForm">
+            <form data-img-id="{{ img_id }}">
+                <img src="{{ img_data.src }}" alt="{{ img_data.title }}">
+                <p>Title: <input type="text" name="title" value="{{ img_data.title }}"></p>
+                <p>Description: <input type="text" name="description" value="{{ img_data.description }}"></p>
+                <button type="button" class="modifyBtn">Modify</button>
+                <button type="button" class="deleteBtn">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

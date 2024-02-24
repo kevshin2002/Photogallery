@@ -18,10 +18,11 @@ app.mount("/js", StaticFiles(directory="public/js"), name="js")
 class Image(BaseModel):
     title: str = None
     description: str = None
-    tags: list[str] = []
 
-images = {}  # Stores images as {img_id: {"title": "example", "description": "desc", "tags": ["tag1", "tag2"]}}
-
+images = {}  # Stores images as 
+             # {
+             #   img_id: {"title": "example", "description": "desc"}
+             #                                                                               }
 
 @app.get('/', response_class=HTMLResponse)
 def get_home(request: Request) -> HTMLResponse:
