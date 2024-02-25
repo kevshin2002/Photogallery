@@ -37,7 +37,7 @@ def get_home(request: Request) -> HTMLResponse:
 def post_image(img_id: int, img_data: Image):
     """
     Handles the posting of an image source URL associated with a given image ID.
-    :param img_id: The ID of the image to which the source URL is to be associated.
+    :param img_id: Position of ID.
     :param img_data: The image data received in the request body, including the source URL.
     :return: A boolean value indicating success or failure of the operation.
     """
