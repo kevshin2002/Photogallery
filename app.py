@@ -18,10 +18,11 @@ app.mount("/js", StaticFiles(directory="public/js"), name="js")
 class Image(BaseModel):
     title: str = None
     description: str = None
+    src: str = None
 
 images = {}  # Stores images as 
              # {
-             #   img_id: {"title": "example", "description": "desc"}
+             #   img_id: {"title": "example", "description": "desc", "src": "url"}
              #                                                                               }
 
 @app.get('/', response_class=HTMLResponse)
