@@ -11,7 +11,6 @@ static_files = StaticFiles(directory='public')
 views = Jinja2Templates(directory="public/views")
 
 app.mount('/public', static_files, name='public')
-app.mount("/imgs", StaticFiles(directory="public/imgs"), name="imgs")
 app.mount("/css", StaticFiles(directory="public/css"), name="css")
 app.mount("/js", StaticFiles(directory="public/js"), name="js")
 
